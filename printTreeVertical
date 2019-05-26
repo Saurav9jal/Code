@@ -1,0 +1,38 @@
+######  Print a Binary Tree in Vertical Order | Set 1
+
+class Node(object):
+     def __init__(self,data):
+        self.data = data
+        self.left = None
+        self.right = None
+    
+  
+
+def printVertical(root,dict,hd):
+    if(root == None):
+        return 
+    if(hd not in dict.keys()):
+        dict[hd] = [root.data]
+    else:
+        dict[hd].append(root.data)
+    printVertical(root.left,dict,hd-1)
+    printVertical(root.right,dict,hd+1) 
+
+
+
+dict ={}
+root = Node(1)
+root.left = Node(2)
+root.left.left = Node(4)
+root.left.right = Node(5)
+root.right = Node(3)
+root.right.left = Node(6)
+root.right.left.right = Node(8)
+root.right.right = Node(7)
+root.right.right.right = Node(9)
+printVertical(root,dict,0)
+print(dict)
+
+
+
+
